@@ -1,0 +1,18 @@
+{
+  "name": "Piano Adventure!",
+  "short_name": "Piano",
+  "description": "A fun piano learning app for kids",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape-primary",
+  "background_color": "#0d0021",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "piano-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}
