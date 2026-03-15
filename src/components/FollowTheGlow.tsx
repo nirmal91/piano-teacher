@@ -7,6 +7,7 @@ import { useAudio } from '../hooks/useAudio';
 import { useProgress } from '../hooks/useProgress';
 import { useMidi } from '../hooks/useMidi';
 import { useKeyboard } from '../hooks/useKeyboard';
+import { useMicPitch } from '../hooks/useMicPitch';
 import { GLOW_SEQUENCES } from '../data/songs';
 import { getNoteById, getOctavesForNotes } from '../data/notes';
 
@@ -106,9 +107,10 @@ export function FollowTheGlow({ onBack }: FollowTheGlowProps) {
     }
   }, [isTransitioning, targetNoteId, playNote, advanceNote, wrongAttempts, targetNote, recordKeyPress]);
 
-  // Physical keyboard (Casio via USB MIDI) and computer keyboard support
+  // Physical keyboard (Casio via USB MIDI), computer keyboard, and microphone support
   const { isConnected: midiConnected, deviceName } = useMidi(handleKeyPress);
   useKeyboard(handleKeyPress);
+  const { isListening: micListening, permissionDenied: micDenied, start: startMic, stop: stopMic } = useMicPitch(handleKeyPress);
 
   const handleCelebrationDone = useCallback(() => {
     setShowCelebration(false);
@@ -140,12 +142,32 @@ export function FollowTheGlow({ onBack }: FollowTheGlowProps) {
         </div>
       </div>
 
-      {/* MIDI connection badge */}
-      {midiConnected && (
-        <div className="bg-green-500/20 border border-green-400/50 rounded-full px-4 py-1 mb-3 text-green-300 text-xs font-bold">
-          🎹 {deviceName ?? 'Keyboard'} connected!
-        </div>
-      )}
+      {/* Input source badges */}
+      <div className="flex flex-wrap gap-2 justify-center mb-3">
+        {midiConnected && (
+          <div className="bg-green-500/20 border border-green-400/50 rounded-full px-4 py-1 text-green-300 text-xs font-bold">
+            🎹 {deviceName ?? 'Keyboard'} connected!
+          </div>
+        )}
+        {micListening && (
+          <div className="bg-orange-500/20 border border-orange-400/50 rounded-full px-4 py-1 text-orange-300 text-xs font-bold animate-pulse">
+            🎤 Listening for piano...
+          </div>
+        )}
+        <button
+          onClick={micListening ? stopMic : startMic}
+          className={`rounded-full px-4 py-1 text-xs font-bold border transition-colors ${
+            micListening
+              ? 'bg-orange-500/30 border-orange-400/60 text-orange-200 hover:bg-orange-500/50'
+              : 'bg-white/10 border-white/20 text-white/70 hover:bg-white/20'
+          }`}
+        >
+          {micListening ? '🎤 Stop Mic' : '🎤 Use Mic'}
+        </button>
+        {micDenied && (
+          <span className="text-red-400 text-xs self-center">Mic access denied</span>
+        )}
+      </div>
 
       {/* Sequence info */}
       {sequence && (
