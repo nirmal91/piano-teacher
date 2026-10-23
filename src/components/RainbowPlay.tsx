@@ -76,7 +76,7 @@ export function RainbowPlay({ onBack }: RainbowPlayProps) {
   const { isListening: micListening, permissionDenied: micDenied, start: startMic, stop: stopMic } = useMicPitch(handleKeyPress);
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-purple-900 via-indigo-900 to-blue-900 px-4 py-6">
+    <div className="flex flex-col items-center min-h-screen bg-linear-to-b from-purple-900 via-indigo-900 to-blue-900 px-4 py-6">
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-6">
         <button

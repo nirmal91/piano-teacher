@@ -143,7 +143,7 @@ export function MagicSong({ onBack }: MagicSongProps) {
   // Song picker
   if (phase === 'pick') {
     return (
-      <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-green-900 via-teal-900 to-blue-900 px-4 py-6">
+      <div className="flex flex-col items-center min-h-screen bg-linear-to-b from-green-900 via-teal-900 to-blue-900 px-4 py-6">
         <div className="w-full flex items-center justify-between mb-6">
           <button
             onClick={onBack}
@@ -217,7 +217,7 @@ export function MagicSong({ onBack }: MagicSongProps) {
   const progress = song ? noteIndex / song.notes.length : 0;
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-green-900 via-teal-900 to-blue-900 px-4 py-6">
+    <div className="flex flex-col items-center min-h-screen bg-linear-to-b from-green-900 via-teal-900 to-blue-900 px-4 py-6">
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-4">
         <button

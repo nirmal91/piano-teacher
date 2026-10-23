@@ -46,7 +46,7 @@ export function HomeScreen({ onSelectMode, isLoadingAudio }: HomeScreenProps) {
   ];
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-purple-950 via-indigo-950 to-blue-950 px-4 py-8">
+    <div className="flex flex-col items-center min-h-screen bg-linear-to-b from-purple-950 via-indigo-950 to-blue-950 px-4 py-8">
       {/* Title */}
       <div className="text-center mb-6 animate-float">
         <div className="text-6xl mb-2">🎹</div>
@@ -98,7 +98,7 @@ export function HomeScreen({ onSelectMode, isLoadingAudio }: HomeScreenProps) {
             key={m.id}
             onClick={() => onSelectMode(m.id)}
             className={`
-              bg-gradient-to-r ${m.bg}
+              bg-linear-to-r ${m.bg}
               border-2 ${m.border}
               rounded-3xl p-6
               text-left flex items-center gap-5
