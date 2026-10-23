@@ -256,7 +256,7 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
           const n = progress.childName || 'Your child';
           const she = progress.childName ? progress.childName : 'She';
           return (
-            <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-5 shadow mb-5">
+            <div className="bg-linear-to-r from-purple-100 to-pink-100 rounded-2xl p-5 shadow mb-5">
               <h3 className="font-black text-gray-700 mb-3">💡 Insights for You</h3>
               <ul className="space-y-2 text-sm text-gray-700">
                 {progress.sessions.length === 0 && (

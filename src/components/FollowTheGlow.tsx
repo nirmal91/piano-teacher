@@ -127,7 +127,7 @@ export function FollowTheGlow({ onBack }: FollowTheGlowProps) {
   const progress = sequence ? noteIndex / sequence.notes.length : 0;
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-indigo-900 via-purple-900 to-pink-900 px-4 py-6">
+    <div className="flex flex-col items-center min-h-screen bg-linear-to-b from-indigo-900 via-purple-900 to-pink-900 px-4 py-6">
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-4">
         <button
